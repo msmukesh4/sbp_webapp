@@ -1,0 +1,15 @@
+<h1>Demo#hello</h1>
+<p>Find me in app/views/demo/hello.html.erb</p>
+
+<% result = 1+1 %>
+<%= "1 + 1 = #{result}" %>
+
+<% @array.each do |n| %>
+	<%= n %></br>
+<%end%>
+
+<%= link_to('Goto index page',{:controller => 'demo', :action => 'index'}) %></br>
+ID : <%= @id%></br>
+ID : <%= params[:id] %></br>
+Next page : <%= @page + 1%></br>
+
