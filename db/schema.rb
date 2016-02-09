@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208182744) do
+ActiveRecord::Schema.define(version: 20160209182446) do
+
+  create_table "doctors", force: true do |t|
+    t.string   "doctor_name",                                           null: false
+    t.string   "doctor_uid",                                            null: false
+    t.string   "type",                                                  null: false
+    t.decimal  "rating",          precision: 3, scale: 2, default: 5.0
+    t.string   "contact_number1"
+    t.string   "contact_number2"
+    t.decimal  "latitude",        precision: 9, scale: 6, default: 0.0
+    t.decimal  "longitude",       precision: 9, scale: 6, default: 0.0
+    t.string   "doctor_icon"
+    t.string   "doctor_banner"
+    t.string   "address",                                 default: ""
+    t.string   "caption",                                 default: ""
+    t.string   "details",                                 default: ""
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "emergency_services", force: true do |t|
+    t.string "type", null: false
+  end
 
   create_table "festivals", force: true do |t|
     t.string   "festival_name",   limit: 50,                          default: "",  null: false
@@ -23,6 +45,42 @@ ActiveRecord::Schema.define(version: 20160208182744) do
     t.decimal  "longitude",                   precision: 9, scale: 6, default: 0.0
     t.string   "details",                                             default: ""
     t.string   "caption",         limit: 100,                         default: ""
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hotels", force: true do |t|
+    t.string   "hotel_name",                                         default: "",     null: false
+    t.string   "hotel_uid",       limit: 20,                         default: "",     null: false
+    t.decimal  "rating",                     precision: 3, scale: 2, default: 5.0
+    t.string   "contact_number1"
+    t.string   "contact_number2"
+    t.decimal  "latitude",                   precision: 9, scale: 6, default: 0.0
+    t.decimal  "longitude",                  precision: 9, scale: 6, default: 0.0
+    t.string   "hotel_icon"
+    t.string   "hotel_banner"
+    t.string   "offer",                                              default: "none"
+    t.string   "address",                                            default: ""
+    t.string   "caption",                                            default: ""
+    t.string   "details",                                            default: ""
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "restaurants", force: true do |t|
+    t.string   "res_name",                                           default: "",     null: false
+    t.string   "res_uid",         limit: 20,                         default: "",     null: false
+    t.decimal  "rating",                     precision: 3, scale: 2, default: 5.0
+    t.string   "contact_number1"
+    t.string   "contact_number2"
+    t.decimal  "latitude",                   precision: 9, scale: 6, default: 0.0
+    t.decimal  "longitude",                  precision: 9, scale: 6, default: 0.0
+    t.string   "res_icon"
+    t.string   "res_banner"
+    t.string   "offer",                                              default: "none"
+    t.string   "address",                                            default: ""
+    t.string   "caption",                                            default: ""
+    t.string   "details",                                            default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,6 +100,22 @@ ActiveRecord::Schema.define(version: 20160208182744) do
     t.string   "contact_number2"
     t.string   "caption",                                             default: ""
     t.string   "details",                                             default: ""
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tourist_destinations", force: true do |t|
+    t.string   "place_name",                                            null: false
+    t.string   "place_uid",                                             null: false
+    t.decimal  "rating",          precision: 3, scale: 2, default: 5.0
+    t.string   "contact_number1"
+    t.string   "contact_number2"
+    t.decimal  "latitude",        precision: 9, scale: 6, default: 0.0
+    t.decimal  "longitude",       precision: 9, scale: 6, default: 0.0
+    t.string   "place_icon"
+    t.string   "banner"
+    t.string   "caption",                                 default: ""
+    t.string   "details",                                 default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
   end
