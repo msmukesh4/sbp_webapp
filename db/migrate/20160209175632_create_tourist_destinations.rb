@@ -3,7 +3,7 @@ class CreateTouristDestinations < ActiveRecord::Migration
     	create_table :tourist_destinations do |t|
 
     		t.string :place_name, :null => false
-    		t.string :place_uid, :null => false
+    		t.string :uid, :null => false
     		t.decimal :rating, :precision => 3, :scale => 2, :default => 5.0
 	    	t.string :contact_number1
 	    	t.string :contact_number2

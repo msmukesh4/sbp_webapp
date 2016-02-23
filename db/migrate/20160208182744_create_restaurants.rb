@@ -3,7 +3,7 @@ class CreateRestaurants < ActiveRecord::Migration
     	create_table :restaurants  do |t|
 
     		t.string :res_name, :null => false, :default => ""
-    		t.string :res_uid, :limit => 20, :null => false, :default => ""
+    		t.string :uid, :limit => 20, :null => false, :default => ""
     		t.decimal :rating, :precision => 3, :scale => 2, :default => 5.0
     		t.string :contact_number1
     		t.string :contact_number2

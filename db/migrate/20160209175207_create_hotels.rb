@@ -3,7 +3,7 @@ class CreateHotels < ActiveRecord::Migration
     	create_table :hotels do |t|
     	
 	    	t.string :hotel_name, :null => false, :default => ""
-	    	t.string :hotel_uid, :limit => 20, :null => false, :default => ""
+	    	t.string :uid, :limit => 20, :null => false, :default => ""
 	    	t.decimal :rating, :precision => 3, :scale => 2, :default => 5.0
 	    	t.string :contact_number1
 	    	t.string :contact_number2

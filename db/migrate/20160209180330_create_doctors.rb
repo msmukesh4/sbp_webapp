@@ -3,7 +3,7 @@ class CreateDoctors < ActiveRecord::Migration
     create_table :doctors do |t|
 
     	t.string :doctor_name, :null => false
-    	t.string :doctor_uid, :null => false
+    	t.string :uid, :null => false
     	t.string :type, :null => false
     	t.decimal :rating, :precision => 3, :scale => 2, :default => 5.0
 	    t.string :contact_number1

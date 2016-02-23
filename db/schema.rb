@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209182446) do
+ActiveRecord::Schema.define(version: 20160210161710) do
 
   create_table "doctors", force: true do |t|
     t.string   "doctor_name",                                           null: false
-    t.string   "doctor_uid",                                            null: false
+    t.string   "uid",                                                   null: false
     t.string   "type",                                                  null: false
     t.decimal  "rating",          precision: 3, scale: 2, default: 5.0
     t.string   "contact_number1"
@@ -31,13 +31,31 @@ ActiveRecord::Schema.define(version: 20160209182446) do
     t.datetime "updated_at"
   end
 
-  create_table "emergency_services", force: true do |t|
+  create_table "emergency_service_types", force: true do |t|
     t.string "type", null: false
   end
 
+  add_index "emergency_service_types", ["id"], name: "index_emergency_service_types_on_id", using: :btree
+
+  create_table "emergency_services", force: true do |t|
+    t.integer  "emergency_service_id",                                       null: false
+    t.string   "name"
+    t.string   "contact_number1",                              default: ""
+    t.string   "contact_number2",                              default: ""
+    t.string   "icon"
+    t.string   "area",                                         default: "",  null: false
+    t.decimal  "latitude",             precision: 9, scale: 6, default: 0.0
+    t.decimal  "longitude",            precision: 9, scale: 6, default: 0.0
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "emergency_services", ["emergency_service_id"], name: "index_emergency_services_on_emergency_service_id", using: :btree
+
   create_table "festivals", force: true do |t|
     t.string   "festival_name",   limit: 50,                          default: "",  null: false
-    t.string   "festival_uid",    limit: 20,                          default: "",  null: false
+    t.string   "uid",             limit: 20,                          default: "",  null: false
     t.string   "festival_icon"
     t.string   "festival_banner"
     t.date     "festival_date"
@@ -51,7 +69,7 @@ ActiveRecord::Schema.define(version: 20160209182446) do
 
   create_table "hotels", force: true do |t|
     t.string   "hotel_name",                                         default: "",     null: false
-    t.string   "hotel_uid",       limit: 20,                         default: "",     null: false
+    t.string   "uid",             limit: 20,                         default: "",     null: false
     t.decimal  "rating",                     precision: 3, scale: 2, default: 5.0
     t.string   "contact_number1"
     t.string   "contact_number2"
@@ -69,7 +87,7 @@ ActiveRecord::Schema.define(version: 20160209182446) do
 
   create_table "restaurants", force: true do |t|
     t.string   "res_name",                                           default: "",     null: false
-    t.string   "res_uid",         limit: 20,                         default: "",     null: false
+    t.string   "uid",             limit: 20,                         default: "",     null: false
     t.decimal  "rating",                     precision: 3, scale: 2, default: 5.0
     t.string   "contact_number1"
     t.string   "contact_number2"
@@ -85,9 +103,33 @@ ActiveRecord::Schema.define(version: 20160209182446) do
     t.datetime "updated_at"
   end
 
+  create_table "service_types", force: true do |t|
+    t.string "type", null: false
+  end
+
+  add_index "service_types", ["id"], name: "index_service_types_on_id", using: :btree
+
+  create_table "services", force: true do |t|
+    t.integer  "service_id",                                                       null: false
+    t.string   "name"
+    t.string   "spacialisations"
+    t.string   "uid",             limit: 20,                                       null: false
+    t.decimal  "rating",                     precision: 3, scale: 2, default: 5.0
+    t.string   "icon"
+    t.string   "contact_number1",                                    default: ""
+    t.string   "contact_number2",                                    default: ""
+    t.decimal  "latitude",                   precision: 9, scale: 6, default: 0.0
+    t.decimal  "longitude",                  precision: 9, scale: 6, default: 0.0
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "services", ["service_id"], name: "index_services_on_service_id", using: :btree
+
   create_table "shops", force: true do |t|
     t.string   "shop_name",       limit: 100,                         default: "",  null: false
-    t.string   "shop_uid",        limit: 20,                          default: "",  null: false
+    t.string   "uid",             limit: 20,                          default: "",  null: false
     t.string   "shop_type"
     t.decimal  "latitude",                    precision: 9, scale: 6, default: 0.0
     t.decimal  "longitude",                   precision: 9, scale: 6, default: 0.0
@@ -104,9 +146,24 @@ ActiveRecord::Schema.define(version: 20160209182446) do
     t.datetime "updated_at"
   end
 
+  create_table "taxi_travels", force: true do |t|
+    t.string   "driver_name"
+    t.string   "uid",             limit: 20,              null: false
+    t.string   "owner_name"
+    t.string   "vehicle_name"
+    t.string   "vehicle_number"
+    t.string   "vehicle_type"
+    t.string   "icon"
+    t.string   "conatct_number1",            default: ""
+    t.string   "conatct_number2",            default: ""
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tourist_destinations", force: true do |t|
     t.string   "place_name",                                            null: false
-    t.string   "place_uid",                                             null: false
+    t.string   "uid",                                                   null: false
     t.decimal  "rating",          precision: 3, scale: 2, default: 5.0
     t.string   "contact_number1"
     t.string   "contact_number2"

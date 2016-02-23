@@ -3,7 +3,7 @@ class CreateFestivals < ActiveRecord::Migration
     create_table :festivals do |t|
 
       t.string :festival_name, :limit => 50, :null => false, :default => ""
-      t.string :festival_uid, :limit => 20, :null => false, :default => ""
+      t.string :uid, :limit => 20, :null => false, :default => ""
       t.string :festival_icon
       t.string :festival_banner
       t.date :festival_date 

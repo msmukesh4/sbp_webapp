@@ -3,7 +3,7 @@ class CreateShops < ActiveRecord::Migration
     create_table :shops do |t|
 
     		t.string :shop_name, :limit => 100, :null => false, :default => ""
-    		t.string :shop_uid, :limit => 20, :null => false, :default => ""
+    		t.string :uid, :limit => 20, :null => false, :default => ""
     		t.string :shop_type
     		t.decimal :latitude, :precision => 9, :scale => 6, :default => 0.0
       	t.decimal :longitude, :precision => 9, :scale => 6, :default => 0.0
