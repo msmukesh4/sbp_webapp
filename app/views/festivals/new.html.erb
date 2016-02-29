@@ -1,0 +1,52 @@
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="festival new">
+  <h2>Create Festival</h2>
+
+  <%= form_for(:festival, :url => {:action => 'create'}) do |f| %>
+
+    <table summary="Festival form fields">
+      <tr>
+        <th>Festival name</th>
+        <td><%= f.text_field(:festival_name) %></td>
+      </tr>
+      <tr>
+        <th>UID</th>
+        <td><%= f.text_field(:uid) %></td>
+      </tr>
+      <tr>
+        <th>Date</th>
+        <td><%= f.text_field(:festival_date) %></td>
+      </tr>
+      <tr>
+        <th>Icon</th>
+        <td><%= f.text_field(:festival_icon) %></td>
+      </tr>
+      <tr>
+        <th>Banner</th>
+        <td><%= f.text_field(:festival_banner) %></td>
+      </tr>
+      <tr>
+        <th>Latitude</th>
+        <td><%= f.text_field(:latitude) %></td>
+      </tr>
+      <tr>
+        <th>Longitude</th>
+        <td><%= f.text_field(:longitude) %></td>
+      </tr>
+      <tr>
+        <th>Caption</th>
+        <td><%= f.text_field(:caption) %></td>
+      </tr>
+      <tr>
+        <th>Details</th>
+        <td><%= f.text_field(:details) %></td>
+      </tr>
+    </table>
+
+    <div class="form-buttons">
+      <%= submit_tag("Create Festival") %>
+    </div>
+
+  <% end %>
+</div>

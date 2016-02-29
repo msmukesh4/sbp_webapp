@@ -4,7 +4,7 @@ class CreateDoctors < ActiveRecord::Migration
 
     	t.string :doctor_name, :null => false
     	t.string :uid, :null => false
-    	t.string :type, :null => false
+    	t.integer :doctor_type_id, :null => false
     	t.decimal :rating, :precision => 3, :scale => 2, :default => 5.0
 	    t.string :contact_number1
 	    t.string :contact_number2
@@ -18,5 +18,6 @@ class CreateDoctors < ActiveRecord::Migration
 
       	t.timestamps
     end
+    add_index(:doctors, :doctor_type_id)
   end
 end

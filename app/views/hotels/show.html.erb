@@ -1,0 +1,69 @@
+<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+<div class="hotel show">
+  <h2>Show Hotel</h2>
+
+  <table summary="hotel detail view">
+      <tr>
+         <th>ID</th>
+           <td><%= @hotel.id %></td>
+       </tr>
+      <tr>
+	      <th>Festival name</th>
+	        <td><%= @hotel.hotel_name %></td>
+	    </tr>
+	    <tr>
+	        <th>UID</th>
+	        <td><%= @hotel.uid %></td>
+	    </tr>
+	    <tr>
+	        <th>Rating</th>
+	        <td><%= @hotel.rating %></td>
+	    </tr>
+	    <tr>
+	        <th>Icon</th>
+	        <td><%= @hotel.hotel_icon %></td>
+	    </tr>
+	    <tr>
+	        <th>Banner</th>
+	        <td><%= @hotel.hotel_banner %></td>
+	    </tr>
+	    <tr>
+	        <th>Latitude</th>
+	        <td><%= @hotel.latitude %></td>
+	    </tr>
+	    <tr>
+	        <th>Longitude</th>
+	        <td><%= @hotel.longitude %></td>
+	    </tr>
+	    <tr>
+	        <th rowspan="2">Contact Number</th>
+	        <td><%= @hotel.contact_number1 %></td>
+	    </tr>
+	    <tr>
+	        <td><%= @hotel.contact_number2 %></td>
+	    </tr>
+	    <tr>
+	        <th>Offer</th>
+	        <td><%= @hotel.offer %></td>
+	    </tr>
+	    <tr>
+	        <th>Address</th>
+	        <td><%= @hotel.address %></td>
+	    </tr>
+	    <tr>
+	    	<th>Caption</th>
+	        <td><%= @hotel.caption %></td>
+	    </tr>
+	    <tr>
+	        <th>Details</th>
+	        <td><%= @hotel.details %></td>
+	    </tr>
+  </table>
+
+</div>

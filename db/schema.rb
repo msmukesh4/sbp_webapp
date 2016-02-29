@@ -11,12 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210161710) do
+ActiveRecord::Schema.define(version: 20160225155527) do
+
+  create_table "doctor_types", force: true do |t|
+    t.string "name", null: false
+  end
 
   create_table "doctors", force: true do |t|
     t.string   "doctor_name",                                           null: false
     t.string   "uid",                                                   null: false
-    t.string   "type",                                                  null: false
+    t.integer  "doctor_type_id",                                        null: false
     t.decimal  "rating",          precision: 3, scale: 2, default: 5.0
     t.string   "contact_number1"
     t.string   "contact_number2"
@@ -31,11 +35,11 @@ ActiveRecord::Schema.define(version: 20160210161710) do
     t.datetime "updated_at"
   end
 
-  create_table "emergency_service_types", force: true do |t|
-    t.string "type", null: false
-  end
+  add_index "doctors", ["doctor_type_id"], name: "index_doctors_on_doctor_type_id", using: :btree
 
-  add_index "emergency_service_types", ["id"], name: "index_emergency_service_types_on_id", using: :btree
+  create_table "emergency_service_types", force: true do |t|
+    t.string "name", null: false
+  end
 
   create_table "emergency_services", force: true do |t|
     t.integer  "emergency_service_id",                                       null: false
@@ -104,10 +108,8 @@ ActiveRecord::Schema.define(version: 20160210161710) do
   end
 
   create_table "service_types", force: true do |t|
-    t.string "type", null: false
+    t.string "name", null: false
   end
-
-  add_index "service_types", ["id"], name: "index_service_types_on_id", using: :btree
 
   create_table "services", force: true do |t|
     t.integer  "service_id",                                                       null: false
